@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EngiMate</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="logo-wrap">
+      <svg class="logo-svg" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7b6fe0"/>
+            <stop offset="100%" stop-color="#00c9a0"/>
+          </linearGradient>
+        </defs>
+        <circle cx="18" cy="18" r="18" fill="url(#lg)"/>
+        <text x="18" y="24" text-anchor="middle" font-family="system-ui,sans-serif"
+              font-weight="800" font-size="18" fill="white">E</text>
+      </svg>
+    </div>
+
+    <nav class="nav">
+      <button type="button" class="nav-btn active" data-tool="unit" title="Unit Converter">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 16V4m0 0L3 8m4-4 4 4M17 8v12m0 0 4-4m-4 4-4-4"/>
+        </svg>
+        <span class="nav-label">Units</span>
+      </button>
+
+      <button type="button" class="nav-btn" data-tool="resistor" title="Resistor Color Code">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M2 12h3M19 12h3"/>
+          <rect x="5" y="7" width="14" height="10" rx="3"/>
+          <line x1="8" y1="7" x2="8" y2="17"/>
+          <line x1="11" y1="7" x2="11" y2="17"/>
+          <line x1="14" y1="7" x2="14" y2="17"/>
+        </svg>
+        <span class="nav-label">Resistor</span>
+      </button>
+
+      <button type="button" class="nav-btn" data-tool="truth" title="Truth Table">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18M3 15h18M9 3v18"/>
+        </svg>
+        <span class="nav-label">Truth</span>
+      </button>
+
+      <button type="button" class="nav-btn" data-tool="datasheet" title="Datasheet Finder">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <circle cx="10" cy="15" r="2"/>
+          <path d="m15 20-3-3"/>
+        </svg>
+        <span class="nav-label">Sheets</span>
+      </button>
+
+      <button type="button" class="nav-btn" data-tool="formula" title="Formula Saver">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 7h16M4 12h10M4 17h6"/>
+          <circle cx="19" cy="17" r="3"/>
+          <path d="m21.5 19.5-1.5-1.5"/>
+        </svg>
+        <span class="nav-label">Formula</span>
+      </button>
+
+      <button type="button" class="nav-btn" data-tool="number" title="Number Converter">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="9" height="8" rx="1.5"/>
+          <rect x="13" y="3" width="9" height="8" rx="1.5"/>
+          <rect x="2" y="13" width="9" height="8" rx="1.5"/>
+          <rect x="13" y="13" width="9" height="8" rx="1.5"/>
+          <line x1="5" y1="17" x2="8" y2="17"/>
+          <line x1="16" y1="5" x2="16" y2="9"/>
+          <path d="M19 17h-5l2-2m0 4-2-2"/>
+        </svg>
+        <span class="nav-label">Numbers</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span class="ver">v1.0</span>
+    </div>
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="content">
+
+    <!-- ═══ Unit Converter ═══ -->
+    <section class="tool active" id="tool-unit">
+      <div class="tool-header">
+        <h2 class="tool-title">Unit Converter</h2>
+        <p class="tool-sub">Engineering &amp; scientific units</p>
+      </div>
+      <div class="tool-body">
+        <div class="form-row">
+          <label class="form-label" for="unit-category">Category</label>
+          <select id="unit-category" class="sel full-width" aria-label="Unit category">
+            <option value="length">📏 Length</option>
+            <option value="mass">⚖️ Mass</option>
+            <option value="temperature">🌡️ Temperature</option>
+            <option value="time">⏱️ Time</option>
+            <option value="frequency">📡 Frequency</option>
+            <option value="voltage">⚡ Voltage</option>
+            <option value="current">🔌 Current</option>
+            <option value="power">💡 Power</option>
+            <option value="capacitance">🔋 Capacitance</option>
+            <option value="inductance">🌀 Inductance</option>
+            <option value="resistance">Ω Resistance</option>
+            <option value="angle">📐 Angle</option>
+            <option value="data">💾 Data / Storage</option>
+          </select>
+        </div>
+        <div class="converter-layout">
+          <div class="converter-side">
+            <input type="number" id="unit-from-val" class="num-input" placeholder="0" step="any" aria-label="Input value">
+            <select id="unit-from" class="sel full-width" aria-label="From unit"></select>
+          </div>
+          <button type="button" id="unit-swap" class="swap-btn" title="Swap units">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+              <path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/>
+            </svg>
+          </button>
+          <div class="converter-side">
+            <input type="number" id="unit-to-val" class="num-input result-input" placeholder="Result" readonly aria-label="Converted result">
+            <select id="unit-to" class="sel full-width" aria-label="To unit"></select>
+          </div>
+        </div>
+        <div id="unit-formula" class="formula-hint"></div>
+      </div>
+    </section>
+
+    <!-- ═══ Resistor Calculator ═══ -->
+    <section class="tool" id="tool-resistor">
+      <div class="tool-header">
+        <h2 class="tool-title">Resistor Color Code</h2>
+        <p class="tool-sub">Decode or encode resistor bands</p>
+      </div>
+      <div class="tool-body">
+        <div class="mode-toggle">
+          <button type="button" class="mode-btn active" id="res-4band" data-bands="4">4-Band</button>
+          <button type="button" class="mode-btn" id="res-5band" data-bands="5">5-Band</button>
+        </div>
+
+        <div class="resistor-wrap">
+          <svg id="res-svg" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg" aria-label="Resistor color band diagram" role="img">
+            <defs>
+              <linearGradient id="leadGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stop-color="#d0d0d0"/>
+                <stop offset="100%" stop-color="#909090"/>
+              </linearGradient>
+              <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stop-color="#f5dfa8"/>
+                <stop offset="45%" stop-color="#d4a86a"/>
+                <stop offset="100%" stop-color="#9a6830"/>
+              </linearGradient>
+              <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.40)"/>
+                <stop offset="55%" stop-color="rgba(255,255,255,0)"/>
+              </linearGradient>
+            </defs>
+            <!-- Leads: solid color, no gradient needed for horizontal lines -->
+            <line x1="0" y1="40" x2="76" y2="40" stroke="#b0b0b0" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="224" y1="40" x2="300" y2="40" stroke="#b0b0b0" stroke-width="3.5" stroke-linecap="round"/>
+            <rect x="76" y="17" width="148" height="46" rx="11" fill="url(#bodyGrad)"/>
+            <rect id="rb1" x="93"  y="17" width="19" height="46" fill="#8B4513"/>
+            <rect id="rb2" x="116" y="17" width="19" height="46" fill="#000"/>
+            <rect id="rb3" x="139" y="17" width="19" height="46" fill="#FF0000"/>
+            <rect id="rb4" x="168" y="17" width="19" height="46" fill="#FFD700"/>
+            <rect id="rb5" x="190" y="17" width="15" height="46" fill="#8B4513" class="hidden"/>
+            <rect x="76" y="17" width="148" height="24" rx="11" fill="url(#sheen)" class="no-ptr"/>
+          </svg>
+        </div>
+
+        <div id="bands-row" class="bands-row"></div>
+
+        <div class="res-result-box" id="res-result">
+          <div class="res-value" id="res-value">— Ω</div>
+          <div class="res-tol" id="res-tol">±—%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Truth Table ═══ -->
+    <section class="tool" id="tool-truth">
+      <div class="tool-header">
+        <h2 class="tool-title">Truth Table Generator</h2>
+        <p class="tool-sub">Boolean logic expressions</p>
+      </div>
+      <div class="tool-body">
+        <div class="form-row">
+          <label class="form-label" for="truth-expr">Boolean Expression</label>
+          <div class="input-btn-row">
+            <input type="text" id="truth-expr" class="text-input mono" placeholder="e.g.  A AND B OR NOT C">
+            <button type="button" id="truth-gen" class="primary-btn">Generate</button>
+          </div>
+        </div>
+        <div class="chips-row">
+          <button type="button" class="chip" data-e="A AND B">A·B</button>
+          <button type="button" class="chip" data-e="A OR B">A+B</button>
+          <button type="button" class="chip" data-e="NOT A">¬A</button>
+          <button type="button" class="chip" data-e="A XOR B">A⊕B</button>
+          <button type="button" class="chip" data-e="NOT (A AND B)">NAND</button>
+          <button type="button" class="chip" data-e="NOT (A OR B)">NOR</button>
+          <button type="button" class="chip" data-e="(A OR B) AND (NOT A OR C)">(A+B)(Ā+C)</button>
+        </div>
+        <div id="truth-error" class="error-msg hidden"></div>
+        <div id="truth-output" class="truth-output"></div>
+      </div>
+    </section>
+
+    <!-- ═══ Datasheet Finder ═══ -->
+    <section class="tool" id="tool-datasheet">
+      <div class="tool-header">
+        <h2 class="tool-title">Datasheet Finder</h2>
+        <p class="tool-sub">Find component specs &amp; datasheets</p>
+      </div>
+      <div class="tool-body">
+        <div class="search-row">
+          <input type="text" id="ds-query" class="text-input" placeholder="Component name or part number…" aria-label="Component search">
+          <button type="button" id="ds-btn" class="primary-btn">Search</button>
+        </div>
+        <div id="ds-links" class="ds-links"></div>
+        <div class="mfr-section">
+          <p class="section-label">Jump to Manufacturer</p>
+          <div class="mfr-grid">
+            <button type="button" class="mfr-btn ti"        data-base="https://www.ti.com/search?q=">TI</button>
+            <button type="button" class="mfr-btn st"        data-base="https://www.st.com/en/search.html?SearchText=">ST</button>
+            <button type="button" class="mfr-btn nxp"       data-base="https://www.nxp.com/search?SearchText=">NXP</button>
+            <button type="button" class="mfr-btn microchip" data-base="https://www.microchip.com/en-us/product/search#q=">Microchip</button>
+            <button type="button" class="mfr-btn adi"       data-base="https://www.analog.com/en/search.html?q=">ADI</button>
+            <button type="button" class="mfr-btn infineon"  data-base="https://www.infineon.com/cms/en/product/search/?term=">Infineon</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Formula Saver ═══ -->
+    <section class="tool" id="tool-formula">
+      <div class="tool-header">
+        <h2 class="tool-title">Formula Saver</h2>
+        <p class="tool-sub">Store &amp; recall engineering formulas</p>
+      </div>
+      <div class="tool-body">
+        <details class="add-formula-wrap" id="add-formula-details">
+          <summary class="add-formula-toggle">+ Add New Formula</summary>
+          <div class="add-formula-form">
+            <input type="text" id="f-name" class="text-input" placeholder="Name (e.g. Ohm's Law)" maxlength="60" aria-label="Formula name">
+            <input type="text" id="f-expr" class="text-input mono" placeholder="Expression (e.g. V = I × R)" maxlength="120" aria-label="Formula expression">
+            <input type="text" id="f-desc" class="text-input" placeholder="Description (optional)" maxlength="100" aria-label="Formula description">
+            <button type="button" id="f-add" class="primary-btn full-width">Save Formula</button>
+          </div>
+        </details>
+        <input type="text" id="f-search" class="text-input search-input" placeholder="🔍 Search formulas…" aria-label="Search formulas">
+        <div id="formula-list" class="formula-list"></div>
+      </div>
+    </section>
+
+    <!-- ═══ Number Converter ═══ -->
+    <section class="tool" id="tool-number">
+      <div class="tool-header">
+        <h2 class="tool-title">Number Converter</h2>
+        <p class="tool-sub">Binary · Decimal · Hex · Octal</p>
+      </div>
+      <div class="tool-body">
+        <div class="num-conv-grid">
+          <div class="num-group">
+            <label class="base-tag bin-tag" for="nc-bin">BIN</label>
+            <input type="text" id="nc-bin" class="mono-input" placeholder="0000 0000" spellcheck="false" autocomplete="off" aria-label="Binary">
+          </div>
+          <div class="num-group">
+            <label class="base-tag dec-tag" for="nc-dec">DEC</label>
+            <input type="text" id="nc-dec" class="mono-input" placeholder="0" spellcheck="false" autocomplete="off" aria-label="Decimal">
+          </div>
+          <div class="num-group">
+            <label class="base-tag hex-tag" for="nc-hex">HEX</label>
+            <input type="text" id="nc-hex" class="mono-input" placeholder="00" spellcheck="false" autocomplete="off" aria-label="Hexadecimal">
+          </div>
+          <div class="num-group">
+            <label class="base-tag oct-tag" for="nc-oct">OCT</label>
+            <input type="text" id="nc-oct" class="mono-input" placeholder="00" spellcheck="false" autocomplete="off" aria-label="Octal">
+          </div>
+        </div>
+        <label class="toggle-wrap">
+          <input type="checkbox" id="nc-signed">
+          <span class="toggle-knob"></span>
+          <span class="toggle-label">Signed (Two's Complement)</span>
+        </label>
+        <div id="nc-bits" class="bit-grid"></div>
+        <div id="nc-color-preview" class="color-preview hidden">
+          <div id="nc-swatch" class="color-swatch"></div>
+          <span id="nc-hex-color" class="color-hex-label"></span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
